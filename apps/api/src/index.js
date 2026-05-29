@@ -28,6 +28,14 @@ app.get('/', (req, res) => {
 
 app.get('/health', healthRoute);
 
+app.get('/livez', (req, res) => {
+  res.status(200).json({ status: 'alive' });
+});
+
+app.get('/readyz', (req, res) => {
+  res.status(200).json({ status: 'ready' });
+});
+
 app.get('/metrics', async (req, res) => {
   res.set('Content-Type', register.contentType);
   res.end(await register.metrics());

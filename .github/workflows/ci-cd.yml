@@ -111,4 +111,4 @@ jobs:
         run: |
           kubectl port-forward svc/devops-api-svc 3000:80 -n devops-platform &
           sleep 5
-          curl -f http://localhost:3000/health
+          curl -f http://localhost:3000/readyz
