@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: devops-platform
+  namespace: argocd
+spec:
+  description: DevOps Local Platform project
+  sourceRepos:
+    - '*'
+  destinations:
+    - namespace: devops-platform
+      server: https://kubernetes.default.svc
+    - namespace: monitoring
+      server: https://kubernetes.default.svc
+    - namespace: logging
+      server: https://kubernetes.default.svc
+  clusterResourceWhitelist:
+    - group: ''
+      kind: Namespace
+  namespaceResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  roles:
+    - name: developer
+      policies:
+        - p, proj:devops-platform:developer, applications, get, devops-platform/*, allow
+        - p, proj:devops-platform:developer, applications, sync, devops-platform/*, allow

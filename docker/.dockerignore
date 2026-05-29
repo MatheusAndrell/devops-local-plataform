@@ -1,0 +1,9 @@
+node_modules
+npm-debug.log*
+.env
+.git
+.github
+tests
+*.test.js
+coverage
+.nyc_output

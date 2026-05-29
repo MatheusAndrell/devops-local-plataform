@@ -1,0 +1,27 @@
+global:
+  environment: staging
+
+replicaCount: 2
+
+image:
+  tag: "staging"
+
+resources:
+  requests:
+    cpu: "100m"
+    memory: "128Mi"
+  limits:
+    cpu: "300m"
+    memory: "384Mi"
+
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 5
+
+ingress:
+  host: api.devops.staging.local
+
+env:
+  NODE_ENV: staging
+  APP_VERSION: "2.0.0-staging"

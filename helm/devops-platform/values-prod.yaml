@@ -1,0 +1,30 @@
+global:
+  environment: prod
+
+replicaCount: 3
+
+image:
+  tag: "stable"
+  pullPolicy: Always
+
+resources:
+  requests:
+    cpu: "200m"
+    memory: "256Mi"
+  limits:
+    cpu: "500m"
+    memory: "512Mi"
+
+autoscaling:
+  enabled: true
+  minReplicas: 3
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 60
+
+ingress:
+  host: api.devops.prod.local
+  tls: true
+
+env:
+  NODE_ENV: production
+  APP_VERSION: "2.0.0"
