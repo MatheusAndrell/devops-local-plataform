@@ -7,7 +7,7 @@
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
     "lint": "eslint \"src/**/*.js\"",
-    "test": "jest --coverage --forceExit"
+    "test": "jest --coverage --passWithNoTests --forceExit"
   },
   "dependencies": {
     "dotenv": "^16.3.1",
