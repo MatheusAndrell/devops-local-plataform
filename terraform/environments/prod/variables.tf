@@ -1,19 +1,19 @@
 variable "api_image" {
-  type    = string
+  type = string
   default = "devops-local-platform-api:stable"
 }
 
 variable "api_port" {
-  type    = number
+  type = number
   default = 3000
 }
 
 variable "postgres_password" {
-  type      = string
+  type = string
   sensitive = true
 }
 
 variable "grafana_admin_password" {
-  type      = string
+  type = string
   sensitive = true
 }

@@ -1,5 +1,5 @@
 resource "docker_network" "this" {
-  name   = var.network_name
+  name = var.network_name
   driver = "bridge"
 
   ipam_config {

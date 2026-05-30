@@ -1,13 +1,13 @@
 apiVersion: v2
 name: devops-platform
-description: Cloud-native DevOps platform Helm chart
+description: DevOps platform Helm chart
 type: application
 version: 2.0.0
 appVersion: "2.0.0"
 keywords:
   - devops
   - nodejs
-  - cloud-native
+  - kubernetes
 maintainers:
   - name: devops-team
     email: devops@example.com

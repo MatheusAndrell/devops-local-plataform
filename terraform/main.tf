@@ -2,7 +2,7 @@ terraform {
   required_version = ">= 1.6.0"
   required_providers {
     docker = {
-      source  = "kreuzwerker/docker"
+      source = "kreuzwerker/docker"
       version = "~> 3.0"
     }
   }
@@ -11,7 +11,7 @@ terraform {
 provider "docker" {}
 
 resource "docker_network" "devops_net" {
-  name   = "devops-net-tf"
+  name = "devops-net-tf"
   driver = "bridge"
 }
 
@@ -24,7 +24,7 @@ resource "docker_volume" "grafana_data" {
 }
 
 resource "docker_container" "api" {
-  name  = "devops-api-tf"
+  name = "devops-api-tf"
   image = var.app_image
 
   networks_advanced {
@@ -45,16 +45,16 @@ resource "docker_container" "api" {
   restart = "unless-stopped"
 
   healthcheck {
-    test         = ["CMD", "wget", "-qO-", "http://localhost:3000/health"]
-    interval     = "30s"
-    timeout      = "5s"
-    retries      = 3
+    test = ["CMD", "wget", "-qO-", "http://localhost:3000/health"]
+    interval = "30s"
+    timeout = "5s"
+    retries = 3
     start_period = "10s"
   }
 }
 
 resource "docker_container" "prometheus" {
-  name  = "devops-prometheus-tf"
+  name = "devops-prometheus-tf"
   image = "prom/prometheus:v2.51.0"
 
   networks_advanced {
@@ -67,14 +67,14 @@ resource "docker_container" "prometheus" {
   }
 
   volumes {
-    volume_name    = docker_volume.prometheus_data.name
+    volume_name = docker_volume.prometheus_data.name
     container_path = "/prometheus"
   }
 
   volumes {
-    host_path      = abspath("${path.module}/../monitoring/prometheus/prometheus.yml")
+    host_path = abspath("${path.module}/../monitoring/prometheus/prometheus.yml")
     container_path = "/etc/prometheus/prometheus.yml"
-    read_only      = true
+    read_only = true
   }
 
   command = [
@@ -86,7 +86,7 @@ resource "docker_container" "prometheus" {
 }
 
 resource "docker_container" "grafana" {
-  name  = "devops-grafana-tf"
+  name = "devops-grafana-tf"
   image = "grafana/grafana:10.4.0"
 
   networks_advanced {
@@ -99,7 +99,7 @@ resource "docker_container" "grafana" {
   }
 
   volumes {
-    volume_name    = docker_volume.grafana_data.name
+    volume_name = docker_volume.grafana_data.name
     container_path = "/var/lib/grafana"
   }
 
@@ -115,7 +115,7 @@ resource "docker_container" "grafana" {
 }
 
 resource "docker_container" "nginx" {
-  name  = "devops-nginx-tf"
+  name = "devops-nginx-tf"
   image = "nginx:1.25-alpine"
 
   networks_advanced {
@@ -128,9 +128,9 @@ resource "docker_container" "nginx" {
   }
 
   volumes {
-    host_path      = abspath("${path.module}/../nginx/nginx.conf")
+    host_path = abspath("${path.module}/../nginx/nginx.conf")
     container_path = "/etc/nginx/nginx.conf"
-    read_only      = true
+    read_only = true
   }
 
   restart = "unless-stopped"

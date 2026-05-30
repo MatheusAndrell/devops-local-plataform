@@ -11,7 +11,7 @@
 ![Grafana](https://img.shields.io/badge/Observability-Grafana-F46800?logo=grafana)
 ![License](https://img.shields.io/badge/License-MIT-lightgrey)
 
-> Production-grade DevOps platform running fully locally. Simulates a real cloud-native engineering environment with GitOps, observability, security, autoscaling, and microservices.
+> DevOps platform running locally with GitOps, observability, security, autoscaling, and microservices.
 
 ---
 

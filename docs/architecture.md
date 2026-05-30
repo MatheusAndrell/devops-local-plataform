@@ -2,7 +2,7 @@
 
 ## Overview
 
-The devops-local-platform simulates a production-grade cloud-native environment, running fully locally with no cloud dependencies.
+The devops-local-platform runs locally and demonstrates a complete DevOps workflow without cloud dependencies.
 
 ## System Diagram
 
